@@ -61,7 +61,7 @@ U_testSET=T{mtrain+mCV+1:end,1:13};
 
 s=1;
 P=1;
-lamda2=2000;
+lamda2=1900;
 X1=[ones(mtrain,1) U_trainSET U_trainSET.^2]; %U_trainSET.^3 U_trainSET.^4 ];
 X2=[ones(mtest,1) U_testSET U_testSET.^2]; %U_testSET.^3  U_testSET.^4];
 X3=[ones(mCV,1) UCV UCV.^2]; %UCV.^3 UCV.^4];
@@ -97,9 +97,10 @@ for w3=2:n3
    
     end
 end
-YtrainSET=T{1:mtrain,3}/mean(T{1:mtrain,3});
-YCV=T{mtrain+1:mtrain+mCV,3}/mean(T{mtrain+1:mtrain+mCV,3});
-YtestSET=T{mtrain+mCV+1:end,3}/mean(T{mtrain+mCV+1:end,3});
+
+YtrainSET=T{1:mtrain,14};%/mean(T{1:mtrain,14});
+YCV=T{mtrain+1:mtrain+mCV,14};%/mean(T{mtrain+1:mtrain+mCV,14});
+YtestSET=T{mtrain+mCV+1:end,14};%/mean(T{mtrain+mCV+1:end,14});
 
 for j=1:length(Theta1)
 ee1=exp(-X1*Theta1);
