@@ -36,7 +36,7 @@ loggX=log(h);
 loggX2=log(1-h);
 g(j)=(1/m)*sum((h-Y)'*X(:,j));
 
-Theta=Theta-(Alpha/m)*X'*(loggX-Y);
+Theta=Theta-(Alpha/m)*X'*(h-Y);
 E(k)=-(1/m)*sum((Y.*loggX)+(1-Y).*loggX2)+(lamda/(2*m))*sum(Theta.^2);
 %ERROR, ALL DATA WITHOUT DIVIDING THEM
 end
@@ -61,7 +61,7 @@ U_testSET=T{mtrain+mCV+1:end,1:13};
 
 s=1;
 P=1;
-lamda2=700;
+lamda2=2000;
 X1=[ones(mtrain,1) U_trainSET U_trainSET.^2]; %U_trainSET.^3 ];
 X2=[ones(mtest,1) U_testSET U_testSET.^2]; %U_testSET.^3 ];
 X3=[ones(mCV,1) UCV UCV.^2]; %UCV.^3];
@@ -108,7 +108,7 @@ loggX1=log(h1);
 loggX2=log(1-h1);
 g1(j)=(1/m)*sum((h1-YtrainSET)'*X1(:,j));
 k=k+1;
-Theta1=Theta1-(Alpha/m)*X1'*(loggX1-YtrainSET);
+Theta1=Theta1-(Alpha/m)*X1'*(h1-YtrainSET);
 ETrain(k)=-(1/m)*sum((YtrainSET.*loggX1)+(1-YtrainSET).*loggX2)+(lamda2/(2*m))*sum(Theta1.^2);
 
 end
@@ -120,7 +120,7 @@ loggX22=log(h2);
 loggX2=log(1-h2);
 g2(j)=(1/m)*sum((h2-YCV)'*X2(:,j));
 
-Theta=Theta-(Alpha/m)*X2'*(loggX22-YCV);
+Theta=Theta-(Alpha/m)*X2'*(h2-YCV);
 Ecv(k)=-(1/m)*sum((YCV.*loggX22)+(1-YCV).*loggX2)+(lamda2/(2*m))*sum(Theta.^2);
 k=k+1;
 end
@@ -132,7 +132,7 @@ loggX33=log(h3);
 loggX333=log(1-h3);
 g3(j)=(1/m)*sum((h3-YtestSET)'*X3(:,j));
 
-Theta=Theta-(Alpha/m)*X3'*(loggX33-YtestSET);
+Theta=Theta-(Alpha/m)*X3'*(h3-YtestSET);
 ETest(k)=-(1/m)*sum((YtestSET.*loggX33)+(1-YtestSET).*loggX333)+(lamda2/(2*m))*sum(Theta.^2);
 k=k+1;
 end
