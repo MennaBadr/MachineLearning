@@ -62,13 +62,13 @@ U_testSET=T{mtrain+mCV+1:end,1:13};
 s=1;
 P=1;
 lamda2=2000;
-X1=[ones(mtrain,1) U_trainSET U_trainSET.^2]; %U_trainSET.^3 ];
-X2=[ones(mtest,1) U_testSET U_testSET.^2]; %U_testSET.^3 ];
-X3=[ones(mCV,1) UCV UCV.^2]; %UCV.^3];
+X1=[ones(mtrain,1) U_trainSET U_trainSET.^2]; %U_trainSET.^3 U_trainSET.^4 ];
+X2=[ones(mtest,1) U_testSET U_testSET.^2]; %U_testSET.^3  U_testSET.^4];
+X3=[ones(mCV,1) UCV UCV.^2]; %UCV.^3 UCV.^4];
 %DIFFERENT HYPOTHESIS
 %ALSO DIFFERENT COLUMNS DIFFERENT FEATURES COULD BE ADDED
 %1ST DEGREE COUNTED AS 1ST HYPOTHESIS
-%2NT DEGREE COUNTED AS 2ND HYPOTHESIS
+%2ND DEGREE COUNTED AS 2ND HYPOTHESIS
 %3RD DEGREE COUNTED AS 3RD HYPOTHESIS
 %4TH DEGREE COUNTED AS 4TH HYPOTHESIS
 n1=length(X1(1,:));
